@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>250 D1下 五香×块映射图（审稿用）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f6f7f9; color:#1f2937; line-height:1.6; padding:24px; }
+  .wrap { max-width:1180px; margin:0 auto; }
+  h1 { font-size:22px; font-weight:700; }
+  .sub { color:#6b7280; font-size:13px; margin-top:2px; }
+  .banner { background:linear-gradient(135deg,#1e3a5f,#2563eb); color:#fff; border-radius:12px; padding:18px 22px; margin-top:14px; }
+  .banner .tag { display:inline-block; background:rgba(255,255,255,.18); border-radius:999px; padding:2px 12px; font-size:12px; margin-bottom:6px; }
+  .banner .xiangyuan { font-size:16px; font-weight:700; line-height:1.55; }
+  .banner .mingxian { font-size:12.5px; opacity:.9; margin-top:6px; }
+  .section-title { font-size:15px; font-weight:700; margin:26px 0 10px; display:flex; align-items:center; gap:8px; }
+  .section-title .no { background:#2563eb; color:#fff; border-radius:6px; padding:1px 8px; font-size:12px; }
+  .grid { display:flex; flex-wrap:wrap; gap:12px; }
+  .card { flex:1 1 calc(20% - 12px); min-width:190px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; padding:12px 13px; position:relative; }
+  .card .block { font-size:13px; font-weight:700; }
+  .card .time { font-size:11.5px; color:#6b7280; margin-top:1px; }
+  .card .title { font-size:13px; color:#374151; margin-top:4px; min-height:38px; }
+  .chips { margin-top:8px; display:flex; flex-wrap:wrap; gap:4px; }
+  .chip { font-size:11px; padding:1px 8px; border-radius:999px; font-weight:600; }
+  .c-xiangyuan { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+  .c-xiangxing { background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; }
+  .c-xiangchang { background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0; }
+  .c-xiangzheng { background:#faf5ff; color:#9333ea; border:1px solid #e9d5ff; }
+  .c-xiangdong { background:#fffbeb; color:#d97706; border:1px solid #fde68a; }
+  .xian { font-size:12.5px; color:#374151; margin-top:8px; border-top:1px dashed #e5e7eb; padding-top:7px; }
+  .xian b { color:#111827; }
+  .flow { display:flex; align-items:center; gap:0; margin:6px 0 2px; }
+  .flow .arrow { color:#9ca3af; font-size:18px; flex:0 0 auto; }
+  .half-label { font-size:12.5px; font-weight:700; color:#475569; margin:16px 0 8px; background:#eef2f7; display:inline-block; padding:2px 12px; border-radius:999px; }
+  .chacompare { display:flex; gap:12px; flex-wrap:wrap; }
+  .cc { flex:1 1 calc(50% - 12px); min-width:280px; background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e5e7eb; }
+  .cc.old { border-left:4px solid #9ca3af; }
+  .cc.new { border-left:4px solid #2563eb; }
+  .cc h3 { font-size:14px; margin-bottom:8px; }
+  .cc.old h3 { color:#6b7280; }
+  .cc.new h3 { color:#2563eb; }
+  .cc p { font-size:13px; color:#374151; }
+  .cc .path { font-size:12.5px; color:#6b7280; margin-top:6px; }
+  .conclusion { margin-top:14px; background:#1e3a5f; color:#fff; border-radius:10px; padding:12px 16px; font-size:13.5px; }
+  .conclusion b { color:#fbbf24; }
+  .hooks { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+  .hook { flex:1 1 calc(33% - 10px); min-width:200px; background:#fff7ed; border:1px solid #fed7aa; color:#9a3412; border-radius:10px; padding:10px 14px; font-size:13px; font-weight:600; text-align:center; }
+  .legend { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .legend .chip { font-size:11px; }
+  .note { font-size:12px; color:#6b7280; margin-top:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>250 D1下 ｜ 五香×块映射图</h1>
+  <div class="sub">讲香审稿图 · 2026-10-01 · 依据 [[250 D1下1_香稿_v1]] / [[250 D1下2_香稿_v1]] · 供讲师 10 秒看懂设计意图</div>
+
+  <div class="banner">
+    <span class="tag">一句话香源（D1下·整个下午·两半场共用）</span>
+    <div class="xiangyuan">你不是缺手艺，也不缺工具——你是想在下午1:30，手机里有一个按你自己骨架做出来的东西；到下午3:30，你最常做的那件重复事，不用再每次从头来——<b>从"我也能做出一个东西"，到"我也能把它打包成工具"</b>。</div>
+    <div class="mingxian">明线 D1 = <b>敢 → 能·起</b>（原来，我也能做出一个东西）｜ 悬念链：怎么把做法变成可复用的？（引 D2·上）</div>
+  </div>
+
+  <div class="section-title"><span class="no">①</span> 十一块 → 五香映射（每块 ≤2 个主香要素）</div>
+
+  <div class="half-label">D1下1 · 下午前半场（0:00–1:30）｜ 复刻流程：先让它见过好的</div>
+  <div class="grid">
+    <div class="card">
+      <div class="block">块一</div>
+      <div class="time">0:00–0:08</div>
+      <div class="title">接悬念：那份简历凭什么挂着</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源</span><span class="chip c-xiangchang">香场</span></div>
+      <div class="xian"><b>香句：</b>你不是缺手艺——下午1:30，手机里有一个按你骨架做出来的东西。</div>
+    </div>
+    <div class="card">
+      <div class="block">块二</div>
+      <div class="time">0:08–0:28</div>
+      <div class="title">找最佳实践：先让它见过好的</div>
+      <div class="chips"><span class="chip c-xiangzheng">香证</span><span class="chip c-xiangdong">香动①</span></div>
+      <div class="xian"><b>香句：</b>你手机里那个"你觉得好看"的东西，就是你的起点。</div>
+    </div>
+    <div class="card">
+      <div class="block">块三</div>
+      <div class="time">0:28–0:48</div>
+      <div class="title">整理数据：4行模板抽骨架</div>
+      <div class="chips"><span class="chip c-xiangxing">香型</span><span class="chip c-xiangdong">香动②</span></div>
+      <div class="xian"><b>香句：</b>把"看到的好"翻译成4行字，你已经在设计的第一级台阶上。</div>
+    </div>
+    <div class="card">
+      <div class="block">块四</div>
+      <div class="time">0:48–1:05</div>
+      <div class="title">复刻·讲师完整演示</div>
+      <div class="chips"><span class="chip c-xiangzheng">香证</span><span class="chip c-xiangxing">香型</span></div>
+      <div class="xian"><b>香句：</b>你只说人话，它出东西——今天下午最值钱的一幕。</div>
+    </div>
+    <div class="card">
+      <div class="block">块五</div>
+      <div class="time">1:05–1:20</div>
+      <div class="title">复刻·学员自己动手</div>
+      <div class="chips"><span class="chip c-xiangdong">香动③</span><span class="chip c-xiangxing">香型</span></div>
+      <div class="xian"><b>香句：</b>这一步做完，你就是"会派活的人"——你没写一行代码。</div>
+    </div>
+    <div class="card">
+      <div class="block">块六</div>
+      <div class="time">1:20–1:30</div>
+      <div class="title">抽查提问＋小结（引休息）</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源回扣</span><span class="chip c-xiangzheng">香证（三问）</span></div>
+      <div class="xian"><b>香句：</b>从"AI好神"到"我也能复刻"——你手机里那个东西，就是证据。</div>
+    </div>
+  </div>
+
+  <div class="half-label">D1下2 · 下午后半场（2:00–3:30）｜ 把流程打包成 Skill</div>
+  <div class="grid">
+    <div class="card">
+      <div class="block">块七</div>
+      <div class="time">2:00–2:10</div>
+      <div class="title">承接：这套流程还想再走一遍吗</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源</span><span class="chip c-xiangchang">香场</span></div>
+      <div class="xian"><b>香句：</b>你不是缺工具——你是想让最重复的那件事，不用每次从头来。</div>
+    </div>
+    <div class="card">
+      <div class="block">块八</div>
+      <div class="time">2:10–2:25</div>
+      <div class="title">抽象：Skill＝范围/步骤/材料</div>
+      <div class="chips"><span class="chip c-xiangxing">香型</span><span class="chip c-xiangdong">香动①</span></div>
+      <div class="xian"><b>香句：</b>从"每次都重新做"到"打包一次，随叫随到"。</div>
+    </div>
+    <div class="card">
+      <div class="block">块九</div>
+      <div class="time">2:25–2:55</div>
+      <div class="title">案例C07：把重复事做成工具</div>
+      <div class="chips"><span class="chip c-xiangzheng">香证</span><span class="chip c-xiangchang">香场</span></div>
+      <div class="xian"><b>香句：</b>2-3小时变几分钟——省下来的时间，是你自己的。</div>
+    </div>
+    <div class="card">
+      <div class="block">块十</div>
+      <div class="time">2:55–3:15</div>
+      <div class="title">进阶：训院四步（拷问需求→demo→开发→测试）</div>
+      <div class="chips"><span class="chip c-xiangdong">香动②</span><span class="chip c-xiangxing">香型</span></div>
+      <div class="xian"><b>香句：</b>先想清楚，再动手——你已经更接近"给自己造工具的人"。</div>
+    </div>
+    <div class="card">
+      <div class="block">块十一</div>
+      <div class="time">3:15–3:30</div>
+      <div class="title">抽查＋收口＋悬念（引 D2·上）</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源落地</span><span class="chip c-xiangzheng">香证（三问）</span></div>
+      <div class="xian"><b>香句：</b>从"它好神"到"我也能"，再到"我也能把它变成工具"——一天，三步。</div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="no">②</span> 香差：把"好作品"和"工具"从"别人的事"翻成"我的事"</div>
+  <div class="chacompare">
+    <div class="cc old">
+      <h3>旧方案（看的人＋忍的人）</h3>
+      <p>看到好东西只会说"好神，我做不了" → 觉得缺天赋/缺技术 → 重复的事每次从头来，烦但没办法 → "工具是程序员的事"，继续忍</p>
+      <p class="path">路径：羡慕成品 → 不敢动 → 重复的活继续干第三遍 → 越来越累</p>
+    </div>
+    <div class="cc new">
+      <h3>新方案（做的人＋造工具的人）</h3>
+      <p>好作品是复刻出来的：找最佳实践 → 抽骨架（4行）→ 喂数据 → 做出来；重复的事打包成 Skill：范围/步骤/材料写清楚 → 一次打包，随叫随到</p>
+      <p class="path">路径：先看好的 → 抽成4行 → 手机里有自己的东西 → 打包成工具 → 2-3小时变几分钟</p>
+    </div>
+  </div>
+  <div class="conclusion">香差：<b>从"看别人做，说好神"到"我也能做出一个东西、还能把它变成工具"</b>；从"我不会做"到"会派活"，从"用工具的人"到"给自己造工具的人"。香源把魂（AI 好神 → 我也能）落成下午的时间承诺：<b>1:30 手机里那个按你骨架做的东西＋3:30 那张"打包"的图纸，就是"我也能"的最低证据。</b></div>
+
+  <div class="section-title"><span class="no">③</span> 验收重点 · 三个回扣句</div>
+  <div class="hooks">
+    <div class="hook">下午1:30，按你的骨架</div>
+    <div class="hook">重复的事，就值得做成一个工具</div>
+    <div class="hook">下午3:30，打包成随叫随到的工具</div>
+  </div>
+
+  <div class="legend">
+    <span class="chip c-xiangyuan">香源＝想变成谁</span>
+    <span class="chip c-xiangxing">香型＝功能→利益→情绪→身份</span>
+    <span class="chip c-xiangchang">香场＝最痛时刻（时间＋地点＋人物＋冲突）</span>
+    <span class="chip c-xiangzheng">香证＝凭什么信</span>
+    <span class="chip c-xiangdong">香动＝下一步最小行动</span>
+  </div>
+
+  <div class="note">注：本图为讲香审稿示意，香句均取自《250 D1下1_香稿_v1》《250 D1下2_香稿_v1》；教法层（锚点/演示/抽查/悬念）沿用底稿未动。</div>
+</div>
+</body>
+</html>

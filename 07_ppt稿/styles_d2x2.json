@@ -1,0 +1,171 @@
+{
+ "styles": [
+  {
+   "name": "脚本表",
+   "cell_styles": [
+    {
+     "range": "A1:J1",
+     "font_weight": "bold",
+     "background_color": "#1E5BC6",
+     "font_color": "#FFFFFF",
+     "horizontal_alignment": "center",
+     "vertical_alignment": "middle"
+    },
+    {
+     "range": "A2:J49",
+     "border": {
+      "style": "solid",
+      "color": "#DDDDDD"
+     }
+    },
+    {
+     "range": "A2:J2",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A4:J4",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A6:J6",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A8:J8",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A10:J10",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A12:J12",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A14:J14",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A16:J16",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A18:J18",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A20:J20",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A22:J22",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A24:J24",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A26:J26",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A28:J28",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A30:J30",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A32:J32",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A34:J34",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A36:J36",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A38:J38",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A40:J40",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A42:J42",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A44:J44",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A46:J46",
+     "background_color": "#F3F4F6"
+    },
+    {
+     "range": "A48:J48",
+     "background_color": "#F3F4F6"
+    }
+   ],
+   "col_sizes": [
+    {
+     "range": "A:A",
+     "size": 60
+    },
+    {
+     "range": "B:B",
+     "size": 60
+    },
+    {
+     "range": "C:C",
+     "size": 70
+    },
+    {
+     "range": "D:D",
+     "size": 210
+    },
+    {
+     "range": "E:E",
+     "size": 420
+    },
+    {
+     "range": "F:F",
+     "size": 70
+    },
+    {
+     "range": "G:G",
+     "size": 90
+    },
+    {
+     "range": "H:H",
+     "size": 320
+    },
+    {
+     "range": "I:I",
+     "size": 70
+    },
+    {
+     "range": "J:J",
+     "size": 70
+    }
+   ],
+   "row_sizes": [
+    {
+     "range": "1:1",
+     "size": 36
+    }
+   ],
+   "freeze": {
+    "rows": 1
+   }
+  }
+ ]
+}

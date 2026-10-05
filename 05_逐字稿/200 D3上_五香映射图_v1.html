@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>200 D3上 五香×块映射图（审稿用）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f6f7f9; color:#1f2937; line-height:1.6; padding:24px; }
+  .wrap { max-width:1180px; margin:0 auto; }
+  h1 { font-size:22px; font-weight:700; }
+  .sub { color:#6b7280; font-size:13px; margin-top:2px; }
+  .banner { background:linear-gradient(135deg,#1e3a5f,#2563eb); color:#fff; border-radius:12px; padding:18px 22px; margin-top:14px; }
+  .banner .tag { display:inline-block; background:rgba(255,255,255,.18); border-radius:999px; padding:2px 12px; font-size:12px; margin-bottom:6px; }
+  .banner .xiangyuan { font-size:15.5px; font-weight:700; line-height:1.55; }
+  .banner .mingxian { font-size:12.5px; opacity:.9; margin-top:6px; }
+  .section-title { font-size:15px; font-weight:700; margin:26px 0 10px; display:flex; align-items:center; gap:8px; }
+  .section-title .no { background:#2563eb; color:#fff; border-radius:6px; padding:1px 8px; font-size:12px; }
+  .grid { display:flex; flex-wrap:wrap; gap:12px; }
+  .card { flex:1 1 calc(20% - 12px); min-width:190px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; padding:12px 13px; position:relative; }
+  .card .block { font-size:13px; font-weight:700; }
+  .card .time { font-size:11.5px; color:#6b7280; margin-top:1px; }
+  .card .title { font-size:13px; color:#374151; margin-top:4px; min-height:38px; }
+  .chips { margin-top:8px; display:flex; flex-wrap:wrap; gap:4px; }
+  .chip { font-size:11px; padding:1px 8px; border-radius:999px; font-weight:600; }
+  .c-xiangyuan { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+  .c-xiangxing { background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; }
+  .c-xiangchang { background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0; }
+  .c-xiangzheng { background:#faf5ff; color:#9333ea; border:1px solid #e9d5ff; }
+  .c-xiangdong { background:#fffbeb; color:#d97706; border:1px solid #fde68a; }
+  .xian { font-size:12px; color:#374151; margin-top:8px; border-top:1px dashed #e5e7eb; padding-top:7px; }
+  .xian b { color:#111827; }
+  .half-label { font-size:12.5px; font-weight:700; color:#475569; margin:16px 0 8px; background:#eef2f7; display:inline-block; padding:2px 12px; border-radius:999px; }
+  .chacompare { display:flex; gap:12px; flex-wrap:wrap; }
+  .cc { flex:1 1 calc(50% - 12px); min-width:280px; background:#fff; border-radius:10px; padding:14px 16px; border:1px solid #e5e7eb; }
+  .cc.old { border-left:4px solid #9ca3af; }
+  .cc.new { border-left:4px solid #2563eb; }
+  .cc h3 { font-size:14px; margin-bottom:8px; }
+  .cc.old h3 { color:#6b7280; }
+  .cc.new h3 { color:#2563eb; }
+  .cc p { font-size:13px; color:#374151; }
+  .cc .path { font-size:12.5px; color:#6b7280; margin-top:6px; }
+  .conclusion { margin-top:14px; background:#1e3a5f; color:#fff; border-radius:10px; padding:12px 16px; font-size:13.5px; }
+  .conclusion b { color:#fbbf24; }
+  .hooks { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+  .hook { flex:1 1 calc(33% - 10px); min-width:200px; background:#fff7ed; border:1px solid #fed7aa; color:#9a3412; border-radius:10px; padding:10px 14px; font-size:13px; font-weight:600; text-align:center; }
+  .legend { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .legend .chip { font-size:11px; }
+  .note { font-size:12px; color:#6b7280; margin-top:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>200 D3上 ｜ 五香×块映射图</h1>
+  <div class="sub">讲香审稿图 · 2026-10-01 · 依据 [[200 D3上1_香稿_v1]] / [[200 D3上2_香稿_v1]] · 供讲师 10 秒看懂设计意图</div>
+
+  <div class="banner">
+    <span class="tag">一句话香源（D3·整个上午·两半场共用）</span>
+    <div class="xiangyuan">你不是缺问法，也不缺工具——你是想在上午11点，手机里有一张"一句话场景卡"：你最想交给AI的那件事，说清楚了，AI接得住；到中午12:30，再添三行字——标准、范例、反馈，你最该开始攒的私有资产有了起点——<b>从"AI好神"到"我也能：先想清楚人和AI怎么分工，先有场景，再谈数据"</b>。</div>
+    <div class="mingxian">明线 D3 = <b>信</b>（原来，我也能想清楚）｜ 悬念链：怎么判断AI的话、怎么当甲方？（引 D3·下）</div>
+  </div>
+
+  <div class="section-title"><span class="no">①</span> 九块 → 五香映射（每块 ≤2 个主香要素）</div>
+
+  <div class="half-label">D3上1 · 上午前半场（09:00–11:05）｜ 立框架（双三角）＋入口（场景）</div>
+  <div class="grid">
+    <div class="card">
+      <div class="block">块一</div>
+      <div class="time">09:00–09:15</div>
+      <div class="title">开场：认知升维——人和AI怎么分工</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源</span><span class="chip c-xiangchang">香场</span></div>
+      <div class="xian"><b>香句：</b>你不是缺问法——上午11点，你手机里会有一张"一句话场景卡"：你最想交给AI的那件事，AI接得住。</div>
+    </div>
+    <div class="card">
+      <div class="block">块二</div>
+      <div class="time">09:15–09:40</div>
+      <div class="title">双三角：人类定方向，AI提产能</div>
+      <div class="chips"><span class="chip c-xiangxing">香型</span><span class="chip c-xiangyuan">香源</span></div>
+      <div class="xian"><b>香句：</b>从"不知道自己要什么"到"说得出方向、让AI提产能"——这个翻转，今天上午走完。</div>
+    </div>
+    <div class="card">
+      <div class="block">块三</div>
+      <div class="time">09:40–10:05</div>
+      <div class="title">一封信六角：一个案例串六个角</div>
+      <div class="chips"><span class="chip c-xiangchang">香场</span><span class="chip c-xiangzheng">香证</span></div>
+      <div class="xian"><b>香句：</b>学期末几十个学生、信写到半夜——这个时刻，就是AI该上场的时候。</div>
+    </div>
+    <div class="card">
+      <div class="block">块四</div>
+      <div class="time">10:15–10:40</div>
+      <div class="title">场景方法论：任务×对象×约束×输出</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源</span><span class="chip c-xiangxing">香型</span></div>
+      <div class="xian"><b>香句：</b>你手机里那张卡，就差这四个词——任务、对象、约束、输出。四个词填满，AI就接得住。</div>
+    </div>
+    <div class="card">
+      <div class="block">块五</div>
+      <div class="time">10:40–11:05</div>
+      <div class="title">场景案例：家长落泪＋一句话场景卡</div>
+      <div class="chips"><span class="chip c-xiangzheng">香证</span><span class="chip c-xiangdong">香动</span></div>
+      <div class="xian"><b>香句：</b>那位老师的档案发出去，五六位家长当场红了眼睛——这就是场景细到极致的样子。</div>
+    </div>
+  </div>
+
+  <div class="half-label">D3上2 · 上午后半场（11:05–12:30）｜ 给燃料（数据）＋上午收束</div>
+  <div class="grid">
+    <div class="card">
+      <div class="block">块六</div>
+      <div class="time">11:05–11:30</div>
+      <div class="title">数据进阶：三类数据（标准/范例/反馈）</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源</span><span class="chip c-xiangxing">香型</span></div>
+      <div class="xian"><b>香句：</b>从"AI写的像所有人"到"AI写的像你"——中间只隔三类数据，今天中午之前，你手机里就有。</div>
+    </div>
+    <div class="card">
+      <div class="block">块七</div>
+      <div class="time">11:30–12:00</div>
+      <div class="title">案例：教案稿库＋C题库过程数据</div>
+      <div class="chips"><span class="chip c-xiangzheng">香证</span><span class="chip c-xiangchang">香场</span></div>
+      <div class="xian"><b>香句：</b>还是那些事，但味儿对了——像你写的，不像百度文库写的。这就是你手机里三行字的威力。</div>
+    </div>
+    <div class="card">
+      <div class="block">块八</div>
+      <div class="time">12:00–12:15</div>
+      <div class="title">处理四步＋6+1策略（轻讲给地图）</div>
+      <div class="chips"><span class="chip c-xiangdong">香动</span><span class="chip c-xiangxing">香型</span></div>
+      <div class="xian"><b>香句：</b>今天下午开始，你改过的每一样东西，都留个v2——这个动作，比记十个口诀都值钱。</div>
+    </div>
+    <div class="card">
+      <div class="block">块九</div>
+      <div class="time">12:15–12:30</div>
+      <div class="title">上午收束：双三角复述＋收场景卡</div>
+      <div class="chips"><span class="chip c-xiangyuan">香源回扣</span><span class="chip c-xiangzheng">香证</span></div>
+      <div class="xian"><b>香句：</b>看见没有？六角，你们能说出来了——上午开始前，你们还不知道有六个角呢。这就是"我也能"的证据。</div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="no">②</span> 香差：把"分工"和"数据"从"别人的事"翻成"我的事"</div>
+  <div class="chacompare">
+    <div class="cc old">
+      <h3>旧方案（聊的人＋攒模板的人）</h3>
+      <p>学更多提示词、收藏"AI提示词大全/万能模板" → 还是不知道从哪开始 → "AI好神，但我使不上" → 同一个豆包，只会聊天；模板用起来不像自己 → 换工具就归零</p>
+      <p class="path">路径：羡慕别人能用AI干活 → 攒一堆模板 → 用起来不像自己 → 以为是工具/问法的问题 → 继续聊天</p>
+    </div>
+    <div class="cc new">
+      <h3>新方案（会分工的人＋攒资产的人）</h3>
+      <p>先立框架（双三角：人类定方向，AI提产能）→ 从场景入口（任务×对象×约束×输出）→ 写一张"一句话场景卡" → 三类数据（标准/范例/反馈）→ 处理四步（脱敏/结构化/标签化/版本化）→ AI像你、数据是你的</p>
+      <p class="path">路径：先想清楚分工 → 找对场景 → 手机里有AI接得住的活 → 攒下别人偷不走的资产 → 换工具也不丢</p>
+    </div>
+  </div>
+  <div class="conclusion">香差：<b>从"差在工具、差在问法"到"差在分工与场景"；从"AI是别人的、换工具就归零"到"AI像你、数据是你自己的"</b>；从"拿AI聊天"到"拿AI干活"。香源把魂（AI 好神 → 我也能）落成上午的时间承诺：<b>上午11点手机里那张一句话场景卡＋中午12:30那三行字，就是"我也能想清楚、也能攒资产"的最低证据。</b></div>
+
+  <div class="section-title"><span class="no">③</span> 验收重点 · 三个回扣句</div>
+  <div class="hooks">
+    <div class="hook">上午11点，你手机里那张卡</div>
+    <div class="hook">先有场景，再谈数据</div>
+    <div class="hook">中午12:30，你手机里那三行字</div>
+  </div>
+
+  <div class="legend">
+    <span class="chip c-xiangyuan">香源＝想变成谁</span>
+    <span class="chip c-xiangxing">香型＝功能→利益→情绪→身份</span>
+    <span class="chip c-xiangchang">香场＝最痛时刻（时间＋地点＋人物＋冲突）</span>
+    <span class="chip c-xiangzheng">香证＝凭什么信</span>
+    <span class="chip c-xiangdong">香动＝下一步最小行动</span>
+  </div>
+
+  <div class="note">注：本图为讲香审稿示意，香句均取自《200 D3上1_香稿_v1》《200 D3上2_香稿_v1》；教法层（锚点/演示/抽查/跟做）沿用底稿未动。</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Obsidian 编辑器本地配置与插件（不同步）
+.obsidian/
+
+# 工具与预览缓存
+.workbuddy/
+.preview/
+.lark-slides/
+.trash/
